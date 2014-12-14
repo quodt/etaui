@@ -1,0 +1,10 @@
+*.py[co]
+*.egg
+*.egg-info
+bin/
+develop-eggs/
+parts/
+etc/supervisord.conf
+.DS\_Store
+.installed.cfg
+var/eta.db
