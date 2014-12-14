@@ -36,7 +36,6 @@ def nailed_requires(requirements, pat=re.compile(r'^(.+)(\[.+\])?$')):
 requires = [
     'pyserial',
     'sqlalchemy',
-    'gevent',
 ]
 
 setup(name='etaui',
