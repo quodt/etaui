@@ -96,14 +96,14 @@ metric_modifier = {
 }
 
 
-def get_metric(self, data):
+def get_metric(data):
     """Read key-value pair from raw data fragment
     """
     key, raw = (data[0] << 8) + data[1], (data[2] << 8) + data[3]
     return key, metric_modifier[key](raw)
 
 
-def read_frame(self, frame):
+def read_frame(frame):
     """Read data from frame
     """
     if len(frame) != 46:
