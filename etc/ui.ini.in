@@ -1,0 +1,60 @@
+[app:main]
+use = egg:etaui
+
+pyramid.reload_templates = true
+pyramid.debug_authorization = false
+pyramid.debug_notfound = false
+pyramid.debug_routematch = false
+pyramid.default_locale_name = en
+pyramid.includes =
+    pyramid_jinja2
+
+auth.secret = 1234
+
+locale.dirs = ${buildout:directory}/locales
+
+jinja2.directories =
+    eta.mail:templates
+jinja2.i18n.domain = waf
+
+db.path = ${buildout:directory}/var/eta.db
+
+sql.pool_size = 5
+sql.max_overflow = 5
+
+###
+# wsgi server configuration
+###
+
+[server:main]
+use = egg:etaui#server
+host = 0.0.0.0
+port = %(http_port)s
+
+###
+# logging configuration
+# http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/logging.html
+###
+
+[loggers]
+keys = root
+
+[handlers]
+keys = console
+
+[formatters]
+keys = generic
+
+[logger_root]
+level = INFO
+handlers = console
+
+[handler_console]
+class = StreamHandler
+args = (sys.stderr,)
+level = NOTSET
+formatter = generic
+
+[formatter_generic]
+format = %(asctime)s %(levelname)-5.5s [%(name)s] %(message)s
+

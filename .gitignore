@@ -5,6 +5,7 @@ bin/
 develop-eggs/
 parts/
 etc/supervisord.conf
+etc/ui.ini
 .DS\_Store
 .installed.cfg
 var/eta.db

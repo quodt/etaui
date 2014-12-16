@@ -36,6 +36,12 @@ def nailed_requires(requirements, pat=re.compile(r'^(.+)(\[.+\])?$')):
 requires = [
     'pyserial',
     'sqlalchemy',
+    'gevent',
+    'pyramid',
+    'pyramid_jinja2',
+    'pyramid_tm',
+    'lovely.pyrest',
+    'zope.sqlalchemy',
 ]
 
 setup(name='etaui',
@@ -53,8 +59,15 @@ setup(name='etaui',
       install_requires=nailed_requires(requires),
       test_suite="etaui",
       entry_points={
+          'paste.app_factory': [
+              'main=eta.server:app_factory',
+          ],
+          'paste.server_factory': [
+              'server=eta.green:server_factory',
+          ],
           'console_scripts': [
-              'monitor=eta.server:main',
+              'daemon=eta.daemon:main',
+              'ui=pyramid.scripts.pserve:main',
           ],
           },
       )

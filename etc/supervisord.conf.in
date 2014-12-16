@@ -17,8 +17,14 @@ supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
 [supervisorctl]
 serverurl = http://localhost:${ports:supervisor}
 
-[program:monitor]
-command = ${buildout:bin-directory}/monitor
+[program:daemon]
+command = ${buildout:bin-directory}/daemon
 redirect_stderr=true
 priority = 1
+stopasgroup = true
+
+[program:ui]
+command = ${buildout:bin-directory}/ui
+redirect_stderr=true
+priority = 2
 stopasgroup = true
