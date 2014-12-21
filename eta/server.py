@@ -44,6 +44,7 @@ def app_factory(global_config, **settings):
 
     config.include('eta.service', route_prefix='/api/v1')
     config.scan('eta.service')
+    config.add_static_view('', '../static')
     init_db(config)
     return config.make_wsgi_app()
 

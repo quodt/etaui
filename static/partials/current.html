@@ -1,0 +1,21 @@
+  <div id="heizung">
+    <div class="big-text" id="status">{{data.response.charge_condition}}%</div>
+    <div id="speicher">
+        <div class="text" id="oben">{{data.response.buffer_upper}}&deg;C</div>
+      <div class="text" id="mitte">{{data.response.buffer_middle}}&deg;C</div>
+      <div class="text" id="unten">{{data.response.buffer_lower}}&deg;C</div>
+    </div>
+    <div id="kessel">
+      <div id="tuere1" class="tuere"></div>
+      <div id="tuere2" class="tuere"></div>
+    </div>
+    <div id="vorlauf"></div>
+    <div class="text" id="vorlauf-temp">{{data.response.kettler_flow}}&deg;C</div>
+    <div id="rueklauf"></div>
+    <div class="text" id="rueklauf-temp">{{data.response.kettler_return}}&deg;C</div>
+    <div id="kamin"></div>
+    <div class="text" id="abgas">{{data.response.exhaust}}&deg;C</div>
+    <div id="haus"></div>
+    <div class="text" id="aussen">{{data.response.outdoor}}&deg;C</div>
+    <div class="text" id="date">{{data.response.date * 1000 | date:'dd.MM.yyyy HH:mm:ss' }}</div>
+  </div>
