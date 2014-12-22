@@ -1,3 +1,5 @@
+import struct
+
 START_1 =          0x7B  # {
 START_2 =          0x4D  # M
 END =              0x7D  # }
@@ -99,7 +101,7 @@ metric_modifier = {
 def get_metric(data):
     """Read key-value pair from raw data fragment
     """
-    key, raw = (data[0] << 8) + data[1], (data[2] << 8) + data[3]
+    key, raw = struct.unpack('>hh', ''.join(map(chr, data)))
     return key, metric_modifier[key](raw)
 
 
