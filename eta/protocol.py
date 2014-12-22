@@ -101,7 +101,7 @@ metric_modifier = {
 def get_metric(data):
     """Read key-value pair from raw data fragment
     """
-    key, raw = struct.unpack('>hh', ''.join(map(chr, data)))
+    key, raw = struct.unpack('>hh', ''.join(map(chr, data[:4])))
     return key, metric_modifier[key](raw)
 
 

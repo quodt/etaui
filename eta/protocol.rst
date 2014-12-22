@@ -28,7 +28,7 @@ init_seq
 get_metric
 ==========
 
-The method requires a value of list type with four items. The first two items
+The method requires a value of list type at least four items. The first two items
 defines the metric key, the two latter one defines the value. The byte order
 is big-endian.
 The return value of the method is tuple with two items in the form (key, value).
@@ -38,7 +38,7 @@ All Temperature metrics get dived by 10::
 
     >>> from eta.protocol import get_metric
     >>> from eta.protocol import NULL, EXHAUST
-    >>> get_metric([NULL, EXHAUST, 0x0, 0x0])
+    >>> get_metric([NULL, EXHAUST, 0x0, 0x0, 0x0])
     (15, 0.0)
 
     >>> get_metric([NULL, EXHAUST, 0xff, 0xff])
